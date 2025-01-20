@@ -57,8 +57,46 @@ const getProjects = async(req,res)=>{
     }
 }
 
+const deleteProject = async(req,res)=>{
+    try{
+        const rol = await user.findById(req.user.id)
+        const id = req.params.id
+
+        if(rol.role === "supervisor"){
+          const data = req.body
+          const object = await project.findByIdAndDelete(id)
+          return res.status(200).json({message:"project deleted",object})
+        }
+        res.status(500).json("only supervisor can delete project")
+    }
+    catch(error){
+    console.log(error)
+    res.status(500).json("Error")
+    }
+}
+
+const updateProject = async(req,res)=>{
+    try{
+        const rol = await user.findById(req.user.id)
+        const id = req.params.id
+
+        if(rol.role === "supervisor"){
+          const data = req.body
+          const object = await project.findByIdAndUpdate(id,data)
+          return res.status(200).json({message:"project updated",object})
+        }
+        res.status(500).json("only supervisor can update project")
+    }
+    catch(error){
+    console.log(error)
+    res.status(500).json("Error")
+    }
+}
 module.exports = {
     createProject,
     getProject,
+    getProjects,
+    updateProject,
+    deleteProject
 
 }
