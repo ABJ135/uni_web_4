@@ -4,7 +4,7 @@ const {Schema}  = require('mongoose')
 const userSchema = new Schema({
     name:String,
     email:String,
-    passwprd:String,
+    password:String,
     role:{
         type:String,
         enum:['student','supervisor']
