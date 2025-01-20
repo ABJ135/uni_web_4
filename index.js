@@ -6,7 +6,7 @@ const dotenv = require('dotenv').config()
 
 //Require route
 const userRouter = require('./router/user.router')
-
+const projectRouter = require('./router/project.router')
 //require mongoose
 const mongoose = require('mongoose')
 //connect to db
@@ -16,6 +16,7 @@ mongoose.connect(process.env.Mongo_URL)
 
 app.use(express.json())
 app.use('/user',userRouter)
+app.use('/project',projectRouter)
 
 
 app.listen(port,()=>{
