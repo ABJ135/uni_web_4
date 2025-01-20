@@ -9,8 +9,8 @@ router.get('/getProject',auth,controller.getProject)
 
 router.get('/getProjects/:id',auth,controller.getProjects)
 
-router.put('/updateProject',auth,controller.updateProject)
+router.put('/updateProject/:id',auth,controller.updateProject)
 
-router.delete('/deleteProject',auth,controller.deleteProject)
+router.delete('/deleteProject/:id',auth,controller.deleteProject)
 
 module.exports = router;
